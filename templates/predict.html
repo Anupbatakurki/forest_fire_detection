@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FWI Prediction - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0eafc;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .login h2 {
+            color: #34495e;
+            text-align: center;
+        }
+        .login input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .login button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+        .login button:hover {
+            background-color: #2ecc71;
+        }
+        footer {
+            text-align: center;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FWI Prediction</h1>
+    </header>
+
+    <div class="container">
+        <div class="login">
+            <h2>Predict Fire Weather Index</h2>
+
+            <!-- Form to send input data to the model -->
+            <form action="{{ url_for('predict')}}" method="post">
+                <input type="text" name="Temperature" placeholder="Temperature" required="required" /><br>
+                <input type="text" name="RH" placeholder="Relative Humidity" required="required" /><br>
+                <input type="text" name="Ws" placeholder="Wind Speed" required="required" /><br>
+                <input type="text" name="Rain" placeholder="Rainfall" required="required" /><br>
+                <input type="text" name="FFMC" placeholder="FFMC" required="required" /><br>
+                <input type="text" name="DMC" placeholder="DMC" required="required" /><br>
+                <input type="text" name="ISI" placeholder="ISI" required="required" /><br>
+                <input type="text" name="Classes" placeholder="Classes" required="required" /><br>
+                <input type="text" name="Region" placeholder="Region" required="required" /><br>
+
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            </form>
+
+            <h2>
+                The FWI prediction is {{result}}
+            </h2>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FWI Prediction Project. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
